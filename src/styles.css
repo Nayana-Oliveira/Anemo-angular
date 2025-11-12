@@ -1,1 +1,237 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --font-family-sans-serif: 'Poppins', sans-serif;
+  --background: #FFFFFF;
+  --foreground: #252525;
+  --card: #FFFFFF;
+  --card-foreground: #252525;
+  --popover: #FFFFFF;
+  --popover-foreground: #252525;
+  --primary: #343434;
+  --primary-foreground: #FAFAFA;
+  --secondary: #F7F7F7;
+  --secondary-foreground: #343434;
+  --muted: #F7F7F7;
+  --muted-foreground: #8E8E8E;
+  --accent: #F7F7F7;
+  --accent-foreground: #343434;
+  --destructive: #E53E3E;
+  --destructive-foreground: #E53E3E;
+  --border: #EBEBEB;
+  --input: #EBEBEB;
+  --ring: #B5B5B5;
+  --chart-1: #A98B3B;
+  --chart-2: #3B9A9C;
+  --chart-3: #5A5A9C;
+  --chart-4: #D4C13B;
+  --chart-5: #C4A93B;
+  --radius: 0.625rem;
+  --sidebar: #FAFAFA;
+  --sidebar-foreground: #252525;
+  --sidebar-primary: #343434;
+  --sidebar-primary-foreground: #FAFAFA;
+  --sidebar-accent: #F7F7F7;
+  --sidebar-accent-foreground: #343434;
+  --sidebar-border: #EBEBEB;
+  --sidebar-ring: #B5B5B5;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.dark {
+  --background: #252525;
+  --foreground: #FAFAFA;
+  --card: #252525;
+  --card-foreground: #FAFAFA;
+  --popover: #252525;
+  --popover-foreground: #FAFAFA;
+  --primary: #FAFAFA;
+  --primary-foreground: #343434;
+  --secondary: #454545;
+  --secondary-foreground: #FAFAFA;
+  --muted: #454545;
+  --muted-foreground: #B5B5B5;
+  --accent: #454545;
+  --accent-foreground: #FAFAFA;
+  --destructive: #9B2C2C;
+  --destructive-foreground: #E53E3E;
+  --border: #454545;
+  --input: #454545;
+  --ring: #707070;
+  --chart-1: #8A4B8A;
+  --chart-2: #4B9C8A;
+  --chart-3: #C4A93B;
+  --chart-4: #A94B9C;
+  --chart-5: #A97A3B;
+  --sidebar: #343434;
+  --sidebar-foreground: #FAFAFA;
+  --sidebar-primary: #8A4B8A;
+  --sidebar-primary-foreground: #FAFAFA;
+  --sidebar-accent: #454545;
+  --sidebar-accent-foreground: #FAFAFA;
+  --sidebar-border: #454545;
+  --sidebar-ring: #707070;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #477556;
+  color: var(--primary-foreground);
+}
+
+.btn-primary:hover {
+  background-color: #183321;
+  color: var(--primary-foreground);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--secondary-foreground);
+  border: 2px solid var(--secondary-foreground);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-foreground);
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 20px;
+}
+
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; 
+  }
+
+  .auth-card {
+    padding: 40px;
+    margin: 15px;
+  }
+
+  .form-grid-2,
+  .product-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; 
+  }
+  
+  h1 {
+    font-size: 28px; 
+  }
+
+  h2 {
+    font-size: 22px; 
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .card, .auth-card {
+    padding: 25px;
+    margin: 10px;
+  }
+
+  .product-grid, .category-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  
+  .product-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-logo {
+      position: static;
+      margin: 0 auto 20px auto;
+  }
+}

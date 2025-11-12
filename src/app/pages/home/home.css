@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+}
+
+.home-page {
+  background-color: var(--background);
+}
+
+.hero-banner {
+  width: 100%;
+  height: 400px;
+  background-image: url("/assets/arvores.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-banner h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-banner p {
+  font-size: 20px;
+  margin-top: 10px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.categories-section {
+  padding: 60px 0;
+  background-color: var(--card);
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.category-item {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.category-item:hover {
+  transform: translateY(-5px);
+}
+
+.category-circle {
+  width: 120px;
+  height: 120px;
+  background-color: var(--card);
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  border: 3px solid var(--primary);
+  overflow: hidden;
+}
+
+.category-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.category-item:hover .category-icon {
+  transform: scale(1.1);
+}
+
+.category-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.products-section {
+  padding: 60px 0;
+  background-color: var(--background);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;
+}
+
+.product-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex; 
+  flex-direction: column; 
+}
+
+.product-info {
+  flex-grow: 1;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: 300px;   
+  object-fit: cover; 
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--foreground);
+}
+
+.product-price {
+  font-size: 16px;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.product-installments {
+  font-size: 14px;
+  color: var(--muted-foreground);
+  margin-bottom: 15px;
+}
+
+.decorative-section {
+  height: 300px;
+  background-image: url("/assets/decorative-green-leaf-pattern.jpg");
+  background-size: cover;
+  background-position: center;
+  margin: 60px 0;
+}

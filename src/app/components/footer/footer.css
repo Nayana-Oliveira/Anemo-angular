@@ -1,0 +1,98 @@
+.footer {
+  background-color: var(--sidebar);
+  padding: 40px 0 20px;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.footer-section h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--foreground);
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 14px;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  line-height: 1.6;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.footer-section a:hover {
+  color: var(--primary);
+}
+
+.payment-methods {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 10px;
+  margin-top: 10px;
+  max-width: 140px; 
+}
+
+.payment-icon {
+  width: 40px;
+  height: 25px;
+  background-color: var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.social-icon {
+  width: 40px; 
+  height: 40px;
+  background-color: var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 8px; 
+  box-sizing: border-box; 
+}
+
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.social-icon:hover {
+  background-color: var(--primary);
+}
+
+
+.certification-badge {
+  width: 120px;
+  height: 80px;
+  background-color: var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  text-align: center;
+}

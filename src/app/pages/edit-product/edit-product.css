@@ -1,0 +1,94 @@
+.edit-product-page {
+  background-color: var(--sidebar);
+  padding: 40px 0;
+  min-height: 80vh;
+}
+
+.edit-product-card {
+  background-color: var(--card);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.edit-product-card h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.image-management-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.image-preview-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--destructive);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.add-photo-btn {
+  width: 100px;
+  height: 100px;
+  border: 2px dashed var(--primary);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--primary);
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.add-photo-btn:hover {
+  background-color: #f0f7f2;
+}
+
+.add-photo-btn span:first-child {
+  font-size: 32px;
+  line-height: 1;
+}

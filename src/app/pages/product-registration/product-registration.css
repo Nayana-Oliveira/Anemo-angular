@@ -1,0 +1,66 @@
+.product-form-page {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--sidebar-primary) 100%);
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+.product-form-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.product-form-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+}
+
+.product-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.upload-section {
+  grid-column: span 2;
+}
+
+.upload-area {
+  border: 3px dashed var(--primary);
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: var(--card);
+}
+
+.upload-area:hover {
+  background-color: var(--sidebar);
+  border-color: var(--primary);
+}
+
+.upload-area div:first-child {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.upload-area div:last-child {
+  font-size: 16px;
+  color: var(--muted-foreground);
+}
+
+.register-btn {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: 15px 40px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  float: right;
+  margin-top: 20px;
+}

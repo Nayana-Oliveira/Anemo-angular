@@ -1,0 +1,40 @@
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <a
+        href="#"
+        class="logo"
+        (click)="navigateToHome(); $event.preventDefault()"
+      >
+        <img src="assets/assets/anemo_logo.png" alt="Anêmo Logo" class="logo-icon-img" />
+        Anêmo
+      </a>
+
+      <form (ngSubmit)="handleSearchSubmit()" class="search-bar">
+        <input
+          type="text"
+          placeholder="Buscar produtos..."
+          [(ngModel)]="searchTerm"
+          name="searchTerm" 
+        />
+        <button type="submit">
+          <fa-icon [icon]="faSearch"></fa-icon>
+        </button>
+      </form>
+
+      <div style="display: flex; align-items: center; gap: 20px">
+        <div
+          class="header-user-info"
+          (click)="navigateToDashboard()"
+        >
+          <div class="user-icon">
+            <img src="assets/assets/placeholder-user.jpg" alt="User Icon" class="user-icon-img" />
+          </div>
+        </div>
+        <div class="cart-icon" (click)="navigateToCart()">
+          <img src="assets/assets/carrinho.svg" alt="Carrinho de compras" />
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

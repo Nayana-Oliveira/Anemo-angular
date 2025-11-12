@@ -1,0 +1,36 @@
+.error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  background-color: var(--background);
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.error-container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.error-code {
+  font-size: 120px;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 20px;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.error-title {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 15px;
+}
+
+.error-message {
+  font-size: 18px;
+  color: var(--muted-foreground);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}

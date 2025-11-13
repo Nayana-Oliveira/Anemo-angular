@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common'; 
 
+import { AuthService } from '../../services/auth';
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -20,10 +22,12 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   
   searchTerm: string = "";
-  user: any = null;
   faSearch = faSearch;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    public authService: AuthService 
+  ) {}
 
   handleSearchSubmit(): void {
     if (this.searchTerm.trim()) {
@@ -41,7 +45,12 @@ export class HeaderComponent {
   }
 
   navigateToDashboard(): void {
-    const page = this.user?.type === "admin" ? "admin-dashboard" : "user-dashboard";
+    const currentUser = this.authService.currentUser();
+    
+    const page = currentUser?.type === "admin" 
+      ? "admin-dashboard" 
+      : "user-dashboard";
+      
     this.router.navigate([page]);
   }
 }

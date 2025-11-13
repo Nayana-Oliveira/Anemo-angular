@@ -261,4 +261,8 @@ export class AdminDashboard implements OnInit {
     this.isAddingCategory = false;
     this.categoryFormData = { ...emptyCategory };
   }
+
+  getPriceAsNumber(price: string): number {
+    return parseFloat(price);
+  }
 }

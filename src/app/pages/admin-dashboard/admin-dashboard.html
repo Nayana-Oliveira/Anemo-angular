@@ -58,10 +58,10 @@
                   <tbody>
                     <tr *ngFor="let product of products">
                       <td>
-                        <img [src]="'assets/' + (product.image || 'assets/placeholder.svg')" [alt]="product.productName" class="product-list-image" />
+                        <img [src]="'assets' + (product.image || '/assets/placeholder.svg')" [alt]="product.productName" class="product-list-image" />
                       </td>
                       <td>{{ product.productName }}</td>
-                      <td>{{ product.price | currency:'BRL' }}</td>
+                      <td>{{ getPriceAsNumber(product.price) | currency:'BRL' }}</td>
                       <td class="product-actions">
                         <button class="btn-edit" (click)="handleEditProduct(product)">Editar</button>
                         <button class="btn-delete" (click)="handleDeleteProduct(product.id)">Excluir</button>

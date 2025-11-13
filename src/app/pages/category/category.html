@@ -4,7 +4,7 @@
     
     <div *ngIf="products.length > 0; else noProducts" class="product-grid">
       <div *ngFor="let product of products" class="product-card">
-        <img [src]="product.image || '/assets/placeholder.svg'" 
+        <img [src]="product.image ? 'assets' + product.image : 'assets/assets/placeholder.svg'" 
              [alt]="product.productName" 
              class="product-image" 
              (click)="onProductSelect(product)" />

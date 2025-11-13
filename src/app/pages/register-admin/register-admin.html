@@ -1,1 +1,123 @@
-<p>register-admin works!</p>
+<div class="auth-page">
+  <div class="auth-card" style="max-width: 800px">
+    <div class="auth-logo">
+      <img src="assets/assets/anemo_logo.png" alt="Anêmo logo"/>
+    </div>
+
+    <h1 style="font-size: 32px; margin-bottom: 20px; color: #333">Cadastro de Administrador</h1>
+    <h2 style="font-size: 20px; margin-bottom: 30px; color: #666">Dados Pessoais</h2>
+
+    <form (ngSubmit)="handleSubmit()">
+      <div class="form-group">
+        <label for="fullName">Nome completo:</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          [(ngModel)]="formData.fullName"
+          required
+        />
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+        <div class="form-group">
+          <label for="birthDate">Data de nascimento:</label>
+          <input
+            type="date"
+            id="birthDate"
+            name="birthDate"
+            [(ngModel)]="formData.birthDate"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="cnpj">CNPJ:</label>
+          <input
+            type="text"
+            id="cnpj"
+            name="cnpj"
+            [(ngModel)]="formData.cnpj"
+            placeholder="00.000.000/0000-00"
+            required
+          />
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+        <div class="form-group">
+          <label for="phone">Telefone:</label>
+          <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required />
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">Celular:</label>
+          <input type="tel" id="mobile" name="mobile" [(ngModel)]="formData.mobile" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="formData.email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha de acesso:</label>
+        <div style="position: relative">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            name="password"
+            [(ngModel)]="formData.password"
+            required
+          />
+          <button
+            type="button"
+            (click)="showPassword = !showPassword"
+            class="toggle-password-btn"
+          >
+            {{ showPassword ? "Esconder" : "Mostrar" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Digite novamente:</label>
+        <div style="position: relative">
+          <input
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            id="confirmPassword"
+            name="confirmPassword"
+            [(ngModel)]="formData.confirmPassword"
+            required
+          />
+          <button
+            type="button"
+            (click)="showConfirmPassword = !showConfirmPassword"
+            class="toggle-password-btn"
+          >
+            {{ showConfirmPassword ? "Esconder" : "Mostrar" }}
+          </button>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px">
+        <button type="submit" class="btn btn-primary" style="min-width: 120px">
+          Registrar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .toggle-password-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+</style>

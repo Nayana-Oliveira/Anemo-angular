@@ -1,1 +1,69 @@
-<p>home works!</p>
+<div class="home-page">
+  <section class="hero-banner">
+  </section>
+
+  <section class="categories-section">
+    <div class="container">
+      <div class="category-grid">
+        <div *ngFor="let category of categories" class="category-item" (click)="onCategorySelect(category.id)">
+          <div class="category-circle">
+            <img [src]="category.icon" [alt]="category.name" class="category-icon" />
+          </div>
+          <div class="category-label">{{ category.name }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-section">
+    <div class="container">
+      <h2 style="text-align: center; font-size: 28px; margin-bottom: 40px">Nossos Produtos</h2>
+      <div class="product-grid">
+        <div *ngFor="let product of topProducts" class="product-card">
+          <img [src]="'assets' + product.image" [alt]="product.productName" class="product-image" (click)="onProductSelect(product)" />
+          <div class="product-info">
+            <div class="product-name">{{ product.productName }}</div>
+            <div class="product-price">{{ getPriceAsNumber(product.price) | currency:'BRL':'symbol' }}</div>
+            <div class="product-installments">
+              ou em até 4x {{ (getPriceAsNumber(product.price) / 4) | currency:'BRL':'symbol' }}
+            </div>
+          </div>
+          <button class="btn btn-primary" (click)="onProductSelect(product)">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="decorative-section"></div>
+
+  <section class="categories-section">
+    <div class="container">
+      <div class="category-grid">
+        <div *ngFor="let category of bottomCategories" class="category-item" (click)="onCategorySelect(category.id)">
+          <div class="category-circle">
+            <img [src]="category.icon" [alt]="category.name" class="category-icon" />
+          </div>
+          <div class="category-label">{{ category.name }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-section">
+    <div class="container">
+      <div class="product-grid">
+        <div *ngFor="let product of bottomProducts" class="product-card">
+          <img [src]="'assets' + product.image" [alt]="product.productName" class="product-image" (click)="onProductSelect(product)" />
+          <div class="product-info">
+            <div class="product-name">{{ product.productName }}</div>
+            <div class="product-price">{{ getPriceAsNumber(product.price) | currency:'BRL':'symbol' }}</div>
+            <div class="product-installments">
+              ou em até 4x {{ (getPriceAsNumber(product.price) / 4) | currency:'BRL':'symbol' }}
+            </div>
+          </div>
+          <button class="btn btn-primary" (click)="onProductSelect(product)">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

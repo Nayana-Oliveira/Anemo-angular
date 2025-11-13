@@ -15,14 +15,17 @@
     },
     {
       "id": "a670",
-      "productName": " Areca Bambu",
+      "productName": "Areca Bambu",
       "productId": "1",
       "category": "plantas-grandes",
       "price": "91.90",
       "quantity": "3",
       "size": "pequeno",
       "description": "A palmeira Areca Bambu tem um alto requinte para ambientes internos e externos que dá um toque de elegância e tropicalismo a qualquer sala ou cômodo da casa. Numerosos caules surgem da base para produzir folhas que se parecem um pouco com o bambu. Suas folhas dão boa umidade para a casa e purificam o ar, filtrando os poluentes. Ela é considerada uma das melhores plantas nesse segmento.",
-      "image": "/products/Areca-Bambu.png"
+      "image": "/products/Areca-Bambu.png",
+      "images": [
+        "/products/Areca-Bambu.png"
+      ]
     },
     {
       "id": "582c",
@@ -51,7 +54,7 @@
       "image": "/products/kit_de_cultivo.png",
       "images": [
         "/products/kit_de_cultivo.png",
-        "/products/products/kit_de_cultivo_microverdes_de_repolho_roxo_e_rucula_isla.png"
+        "/products/kit_de_cultivo_microverdes_de_repolho_roxo_e_rucula_isla.png"
       ]
     },
     {
@@ -62,7 +65,7 @@
       "price": "15.50",
       "quantity": "60",
       "size": "pequeno",
-      "description": "O **Feijão-borboleta** (*Clitoria ternatea*), também conhecido como **ervilha-borboleta** ou **blue pea**, é uma planta trepadeira ornamental e medicinal, originária da Ásia tropical. Suas flores chamam atenção pela coloração azul intensa (podendo variar para branco ou lilás em algumas variedades), lembrando o formato de uma borboleta.\n\nDe crescimento rápido, pode ser cultivada em vasos, cercas ou treliças, preferindo locais ensolarados e solos bem drenados. Além de embelezar jardins, suas flores são comestíveis e muito usadas para fazer chás naturais, que mudam de cor conforme o pH, e também para corantes alimentícios naturais. A planta também é valorizada por suas propriedades antioxidantes e calmantes.\n",
+      "description": "O Feijão-borboleta (Clitoria ternatea), também conhecido como ervilha-borboleta ou blue pea, é uma planta trepadeira ornamental e medicinal, originária da Ásia tropical. Suas flores chamam atenção pela coloração azul intensa (podendo variar para branco ou lilás em algumas variedades), lembrando o formato de uma borboleta.\n\nDe crescimento rápido, pode ser cultivada em vasos, cercas ou treliças, preferindo locais ensolarados e solos bem drenados. Além de embelezar jardins, suas flores são comestíveis e muito usadas para fazer chás naturais, que mudam de cor conforme o pH, e também para corantes alimentícios naturais. A planta também é valorizada por suas propriedades antioxidantes e calmantes.\n",
       "image": "/products/FEIJAO-BORBOLETA-CORTE.png",
       "images": [
         "/products/FEIJAO-BORBOLETA-CORTE.png"
@@ -76,7 +79,7 @@
       "price": "150.00",
       "quantity": "3",
       "size": "medio",
-      "description": "O **Buquê de Flores “A Noite Estrelada” – Van Gogh** é uma composição inspirada na famosa obra do pintor holandês, trazendo tons intensos de azul, amarelo e branco. As flores são cuidadosamente selecionadas para representar o movimento e a energia das pinceladas de Van Gogh, criando um arranjo elegante, artístico e cheio de personalidade. Ideal para presentear em ocasiões especiais ou decorar ambientes com um toque de arte e sofisticação.",
+      "description": "O Buquê de Flores “A Noite Estrelada” – Van Gogh é uma composição inspirada na famosa obra do pintor holandês, trazendo tons intensos de azul, amarelo e branco. As flores são cuidadosamente selecionadas para representar o movimento e a energia das pinceladas de Van Gogh, criando um arranjo elegante, artístico e cheio de personalidade. Ideal para presentear em ocasiões especiais ou decorar ambientes com um toque de arte e sofisticação.",
       "image": "/products/Buqu_de_Flores_A_noite_estrelada_Van_Gogh_4.png",
       "images": [
         "/products/Buqu_de_Flores_A_noite_estrelada_Van_Gogh_4.png"
@@ -90,7 +93,7 @@
       "price": "80.00",
       "quantity": "10",
       "size": "medio",
-      "description": "Buquê apaixonante com rosas vermelhas e delicada gipsofila. Presente perfeito para expressar amor, carinho e sofisticação",
+      "description": "Surpreenda quem você ama com o clássico e apaixonante Buquê com 12 Rosas Vermelhas. Cada rosa é cuidadosamente selecionada para garantir frescor e beleza, simbolizando amor, paixão e admiração. Perfeito para ocasiões especiais como aniversários, Dia dos Namorados ou simplesmente para expressar seus sentimentos de forma inesquecível. Encante com a elegância e o aroma inconfundível das rosas vermelhas.",
       "image": "/products/400_28625.jpg",
       "images": [
         "/products/400_28625.jpg"
@@ -98,13 +101,13 @@
     },
     {
       "id": "f381",
-      "productName": " Cactus Mandacaru Grande",
+      "productName": "Cactus Mandacaru Grande",
       "productId": "8",
       "category": "plantas-grandes",
       "price": "450.00",
       "quantity": "20",
       "size": "grande",
-      "description": "O Cactus Mandacaru (Cereus jamacaru) é um cacto colunar que pode crescer até 6 metros de altura. Tem espinhos ao longo das costelas e produz flores brancas noturnas e frutos comestíveis. Ideal para jardins secos, tolera pleno sol e pouca água.",
+      "description": "O Cactus Mandacaru (Cereus jamacaru) é uma planta suculenta nativa do Brasil, conhecida por sua impressionante altura e resistência. Com seu caule robusto e colunar, o Mandacaru pode atingir vários metros de altura, tornando-se uma peça central marcante em jardins e paisagismos. Adaptado a climas áridos, ele armazena água em seus tecidos, permitindo sobreviver em condições de seca prolongada. Além de sua beleza única, o Mandacaru também floresce com flores grandes e vistosas durante a noite, atraindo polinizadores como morcegos e mariposas. É uma escolha popular para quem busca uma planta de baixa manutenção que adiciona um toque exótico e dramático ao ambiente.",
       "image": "/products/CactusMandacaru1_420x.png",
       "images": [
         "/products/CactusMandacaru1_420x.png"
@@ -118,10 +121,10 @@
       "price": "16.00",
       "quantity": "10",
       "size": "medio",
-      "description": "Dê um toque moderno e elegante à sua decoração com o Vaso Cachepot Decorativo de Mesa 16x11cm – Linha Okla. Com design minimalista e textura listrada diferenciada, ele é perfeito para compor ambientes sofisticados e aconchegantes, seja em mesas, prateleiras, aparadores ou escritórios.\n\nProduzido em polipropileno de alta qualidade, o vaso é leve, resistente e durável, ideal para o dia a dia. Além disso, suas cores modernas permitem combinações versáteis com diferentes estilos de decoração e plantas.",
+      "description": "Dê um toque moderno e elegante ao seu espaço com o Vaso Cachepot Decorativo de Mesa 16x11cm. Com um design contemporâneo e acabamento sofisticado, este vaso é perfeito para acomodar suas plantas favoritas, seja em casa ou no escritório. Seu tamanho compacto o torna ideal para mesas, prateleiras ou bancadas, adicionando um charme especial ao ambiente. Feito com materiais de alta qualidade, o cachepot é durável e fácil de limpar, proporcionando praticidade sem abrir mão do estilo.",
       "image": "/products/download.jpg",
       "images": [
-        "/products/downloaproductsd.jpg"
+        "/products/download.jpg"
       ]
     },
     {
@@ -132,7 +135,7 @@
       "price": "25.00",
       "quantity": "20",
       "size": "pequeno",
-      "description": "Kit de sementes de **Alyssum Flor de Mel** nas cores **amarelo e violeta**, ideal para jardins e vasos. Flores delicadas, perfumadas e atraentes para abelhas e borboletas.",
+      "description": "Kit de sementes de Alyssum Flor de Mel nas cores amarelo e violeta, ideal para cultivo em jardins, vasos ou hortas urbanas. O Alyssum é conhecido por suas flores delicadas e fragrância doce, atraindo polinizadores como abelhas e borboletas. Este kit oferece uma maneira fácil e divertida de cultivar suas próprias flores em casa, promovendo a biodiversidade e embelezando seu espaço com cores vibrantes.",
       "image": "/products/kit_sementes_de_alyssum_flor_de_mel_amarelo_e_violeta_isla_17677_1_d29d66329105bd3fa3cc06882cfb1bc6.png",
       "images": [
         "/products/kit_sementes_de_alyssum_flor_de_mel_amarelo_e_violeta_isla_17677_1_d29d66329105bd3fa3cc06882cfb1bc6.png"
@@ -146,7 +149,7 @@
       "price": "12.00",
       "quantity": "20",
       "size": "pequeno",
-      "description": "Herbácea anual, ereta, de 30-60 cm de altura, de caule suculento. As folhas, às vezes, são levemente avermelhadas. Inflorescências plumosas, alongadas, eretas vermelhas, amarelas ou branco-creme, com flores bem pequenas. Deve ser cultivada a pleno sol, principalmente em canteiros no meio de gramados, em solo rico em matéria orgânica, de boa drenagem e irrigados frequentemente. Não tolera temperaturas baixas de inverno. É considerada uma Planta Alimentícia não Convencional (PANC) devido suas folhas e flores jovens e sementes.",
+      "description": "Herbácea anual, ereta ou ramificada, que atinge de 30 cm a 1 m de altura. Folhas simples, alternas, inteiras, elípticas a ovais-lanceoladas, com 4 a 12 cm de comprimento e 2 a 5 cm de largura. Inflorescências em espigas densas, cilíndricas ou cônicas, com flores pequenas e numerosas, de coloração vibrante que varia do vermelho ao amarelo. Floresce do verão ao outono. Cultivada como planta ornamental e também apreciada na culinária por suas folhas nutritivas.",
       "image": "/products/CELOSIA-CORTECORTE.png",
       "images": [
         "/products/CELOSIA-CORTECORTE.png"
@@ -160,7 +163,7 @@
       "price": "168.00",
       "quantity": "20",
       "size": "pequeno",
-      "description": "Arranjo vibrante com flores amarelas, roxas e brancas em vaso bege, perfeito para alegrar ambientes e transmitir boas energias.",
+      "description": "Arranjo vibrante com flores de lírio em tons variados, perfeito para decorar qualquer ambiente com elegância e frescor. Ideal para presentear ou em ocasiões especiais.",
       "image": "/products/230_31258.jpg",
       "images": [
         "/products/230_31258.jpg"
@@ -174,7 +177,7 @@
       "price": "86.00",
       "quantity": "30",
       "size": "medio",
-      "description": "A cereja europeia, conhecida cientificamente como Prunus avium, é uma árvore frutífera que pertence à família Rosaceae. Originária da Europa, essa planta apresenta um porte médio a grande, podendo atingir alturas entre 6 e 15 metros. A cerejeira europeia possui um tronco reto e copa arredondada, com folhas ovais, de cor verde brilhante. Durante a primavera, a árvore se enche de flores brancas ou rosadas, em forma de sino, que exalam um aroma agradável. Essas flores são seguidas pela formação dos frutos, as cerejas, que são conhecidas por seu sabor doce e suculento.",
+      "description": "A cereja europeia (Prunus avium) é uma árvore frutífera de porte médio a grande, conhecida por produzir frutos doces e suculentos. Originária da Europa, essa espécie se adapta bem a climas temperados e requer um período de frio para florescer adequadamente. As flores são brancas e aparecem na primavera, seguidas pelos frutos vermelhos brilhantes que amadurecem no verão. A cereja europeia é apreciada tanto para consumo in natura quanto para uso em sobremesas, geleias e bebidas. Além disso, a árvore também é valorizada por sua madeira resistente e pela beleza ornamental que proporciona ao jardim.",
       "image": "/products/cereja-europeia.png",
       "images": [
         "/products/cereja-europeia.png"
@@ -188,7 +191,7 @@
       "price": "47.99",
       "quantity": "30",
       "size": "medio",
-      "description": "A Goiaba Tailandesa é uma variedade exótica de goiabeira originária da Tailândia, conhecida por seus frutos de tamanho médio a grande, casca verde-amarelada e polpa macia e suculenta. Essa planta tropical é apreciada pelo seu sabor doce e aroma intensamente agradável, sendo utilizada tanto para consumo in natura quanto para a produção de sucos, geleias e doces.",
+      "description": "A Goiaba Tailandesa (Psidium guajava) é uma variedade exótica e saborosa da goiaba, originária da Tailândia. Conhecida por sua polpa doce e suculenta, essa fruta é rica em vitamina C, fibras e antioxidantes, tornando-a uma escolha saudável para consumo. A Goiaba Tailandesa pode ser apreciada fresca, em sucos, saladas de frutas ou utilizada em sobremesas. Além de seu sabor delicioso, a planta também é valorizada por suas propriedades medicinais, sendo utilizada na medicina tradicional para tratar diversos problemas de saúde. Cultivá-la em casa pode ser uma experiência gratificante, proporcionando frutos frescos e nutritivos diretamente do seu jardim.",
       "image": "/products/goiaba-tailandesa.png",
       "images": [
         "/products/goiaba-tailandesa.png"

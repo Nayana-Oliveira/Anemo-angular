@@ -1,1 +1,24 @@
-<p>search-results works!</p>
+<div class="search-results-page">
+  <div class="container">
+    <h1 class="search-results-title">Resultados da Busca por: "{{ searchTerm }}"</h1>
+    
+    <div *ngIf="results.length > 0; else noResults" class="product-grid">
+      <div *ngFor="let product of results" class="product-card" (click)="onProductSelect(product)">
+        <img [src]="product.image || '/assets/placeholder.svg'" [alt]="product.productName" class="product-image" />
+        <div class="product-info">
+          <div class="product-name">{{ product.productName }}</div>
+          <div class="product-price">{{ getPriceAsNumber(product.price) | currency:'BRL' }}</div>
+          <div class="product-installments">
+            ou em até 4x {{ (getPriceAsNumber(product.price) / 4) | currency:'BRL' }}
+          </div>
+        </div>
+        <button class="btn btn-primary">Ver Produto</button>
+      </div>
+    </div>
+
+    <ng-template #noResults>
+      <p class="no-results-message">Nenhum produto encontrado.</p>
+    </ng-template>
+  </div>
+  
+  </div>

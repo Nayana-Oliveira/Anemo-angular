@@ -1,7 +1,7 @@
 <div class="auth-page">
   <div class="auth-card">
     <div class="auth-logo">
-      <img src="assets/assets/anemo_logo.png" alt="Anêmo logo" />
+      <img src="../../../assets/assets/anemo_logo.png" alt="Anêmo logo" />
     </div>
 
     <h1 style="font-size: 32px; margin-bottom: 40px; color: #333">Login</h1>
@@ -31,15 +31,7 @@
           <button
             type="button"
             (click)="showPassword = !showPassword"
-            style="
-              position: absolute;
-              right: 10px;
-              top: 50%;
-              transform: translateY(-50%);
-              background: none;
-              border: none;
-              cursor: pointer;
-            "
+            class="toggle-password-btn" 
           >
             {{ showPassword ? "Esconder" : "Mostrar" }}
           </button>
@@ -81,7 +73,7 @@
 
       <div class="social-login">
         <button type="button" class="social-btn">
-          <img src="assets/assets/google.svg" alt="Google" />
+          <img src="../../../assets/assets/google.svg" alt="Google" />
         </button>
       </div>
     </form>
@@ -110,3 +102,15 @@
     </div>
   </div>
 </div>
+
+<style>
+  .toggle-password-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+</style>

@@ -1,1 +1,139 @@
-<p>cart works!</p>
+<div class="cart-page">
+  <div class="container">
+    <h1 class="cart-title">Meu Carrinho</h1>
+
+    <div *ngIf="cartService.items().length === 0; else cartContent" 
+         style="text-align: center; padding: 40px; background-color: #fff; border-radius: 20px">
+      <h2>Seu carrinho está vazio.</h2>
+      <button class="btn btn-primary" style="margin-top: 20px" (click)="navigateToHome()">
+        Ver produtos
+      </button>
+    </div>
+
+    <ng-template #cartContent>
+      <div class="cart-layout">
+        <div class="cart-main">
+          <div class="cart-items-box">
+            
+            <div *ngFor="let item of cartService.items()" class="cart-item">
+              <img [src]="item.product.image" [alt]="item.product.productName" class="cart-item-image" />
+              <div class="cart-item-details">
+                <p class="cart-item-name">{{ item.product.productName }}</p>
+                <p class="cart-item-price">{{ getPriceAsNumber(item.product.price) | currency:'BRL' }}</p>
+              </div>
+              <div class="cart-item-quantity">
+                <button (click)="handleQuantityChange(item, -1)">-</button>
+                <input type="text" [value]="item.quantity" readonly />
+                <button (click)="handleQuantityChange(item, 1)">+</button>
+              </div>
+              <p class="cart-item-total-price">
+                {{ (getPriceAsNumber(item.product.price) * item.quantity) | currency:'BRL' }}
+              </p>
+              <button (click)="handleRemoveItem(item)" 
+                      style="background: #E53E3E; color: white; border: none; border-radius: 4px; padding: 5px 8px; cursor: pointer; margin-left: 10px;">
+                X
+              </button>
+            </div>
+          </div>
+          
+          <div class="shipping-box">
+            <h3>Calcular Frete</h3>
+            <div class="shipping-input-group">
+              <input type="text" placeholder="Digite o seu CEP" />
+              <button class="btn btn-primary">Calcular</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-summary">
+          <h2>Resumo da Compra</h2>
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span>{{ cartService.subtotal() | currency:'BRL' }}</span>
+          </div>
+          <div class="summary-row">
+            <span>Frete:</span>
+            <span>{{ cartService.shippingCost() | currency:'BRL' }}</span>
+          </div>
+          <div class="summary-total-row">
+            <span>Total:</span>
+            <span>{{ cartService.total() | currency:'BRL' }}</span>
+          </div>
+
+          <h3 class="payment-title">Forma de Pagamento</h3>
+          <div class="payment-methods">
+            <div
+              class="payment-option"
+              [class.active]="selectedPayment === 'pix'"
+              (click)="selectedPayment = 'pix'">
+              PIX
+            </div>
+            <div
+              class="payment-option"
+              [class.active]="selectedPayment === 'card'"
+              (click)="selectedPayment = 'card'">
+              Cartão de Crédito
+            </div>
+            <div
+              class="payment-option"
+              [class.active]="selectedPayment === 'boleto'"
+              (click)="selectedPayment = 'boleto'">
+              Boleto
+            </div>
+          </div>
+
+          <div class="payment-details" [ngSwitch]="selectedPayment">
+            <div *ngSwitchCase="'pix'" class="payment-details-form">
+              <h4>Preencha os dados para o PIX</h4>
+              <div class="form-group">
+                <label for="pix-name">Nome Completo</label>
+                <input type="text" id="pix-name" placeholder="Seu nome completo" />
+              </div>
+              <div class="form-group">
+                <label for="pix-cpf">CPF</label>
+                <input type="text" id="pix-cpf" placeholder="000.000.000-00" />
+              </div>
+            </div>
+            
+            <div *ngSwitchCase="'card'" class="payment-details-form">
+              <h4>Preencha os dados do Cartão</h4>
+              <div class="form-group">
+                <label for="card-number">Número do Cartão</label>
+                <input type="text" id="card-number" placeholder="0000 0000 0000 0000" />
+              </div>
+              <div class="form-group">
+                <label for="card-name">Nome no Cartão</label>
+                <input type="text" id="card-name" placeholder="Como está escrito no cartão" />
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="card-expiry">Validade</label>
+                  <input type="text" id="card-expiry" placeholder="MM/AA" />
+                </div>
+                <div class="form-group">
+                  <label for="card-cvv">CVV</label>
+                  <input type="text" id="card-cvv" placeholder="123" />
+                </div>
+              </div>
+            </div>
+
+            <div *ngSwitchCase="'boleto'" class="payment-details-form">
+              <h4>Preencha os dados para o Boleto</h4>
+              <div class="form-group">
+                <label for="boleto-name">Nome Completo</label>
+                <input type="text" id="boleto-name" placeholder="Seu nome completo" />
+              </div>
+              <div class="form-group">
+                <label for="boleto-cpf">CPF</label>
+                <input type="text" id="boleto-cpf" placeholder="000.000.000-00" />
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-finalize">Finalizar Compra</button>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>

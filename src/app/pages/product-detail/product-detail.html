@@ -1,1 +1,64 @@
-<p>product-detail works!</p>
+<div *ngIf="product; else loading">
+  <div style="background-color: white; padding: 20px 0">
+    <div class="container">
+      <div style="font-size: 14px; color: #666; margin-bottom: 20px">
+        <a [routerLink]="['/home']"
+          style="background: none; border: none; color: #6b9b76; text-decoration: underline; cursor: pointer">
+          Home
+        </a>
+        <span style="margin: 0 10px">-</span>
+        <span>{{ product.productName }}</span>
+      </div>
+
+      <div class="product-detail-grid">
+        <div class="product-images-grid">
+          
+          <div class="product-thumbnails">
+            <div *ngFor="let img of productImages"
+              [style.background-image]="'url(' + img + ')'"
+              style="width: 100px; height: 100px; background-size: cover; background-position: center; border-radius: 10px; cursor: pointer;"
+              [style.border]="mainImage === img ? '2px solid #6b9b76' : '2px solid transparent'"
+              (click)="mainImage = img">
+            </div>
+          </div>
+
+          <div class="product-main-image"
+               [style.background-image]="'url(' + mainImage + ')'">
+          </div>
+          </div>
+
+        <div>
+          <h1 style="font-size: 36px; font-weight: bold; color: #333">{{ product.productName }}</h1>
+          <div style="margin-bottom: 30px">
+            <p style="font-size: 28px; font-weight: bold; color: #6b9b76">
+              {{ getPriceAsNumber(product.price) | currency:'BRL' }}
+            </p>
+            <p style="font-size: 16px; color: #666">
+              ou em até 4x {{ (getPriceAsNumber(product.price) / 4) | currency:'BRL' }}
+            </p>
+          </div>
+          
+          <div class="quantity-controls">
+            <div class="quantity-input-group">
+              <button (click)="handleQuantityChange(-1)">-</button>
+              <input type="number" [(ngModel)]="quantity" readonly />
+              <button (click)="handleQuantityChange(1)">+</button>
+            </div>
+            <button (click)="onAddToCart()" class="btn btn-primary" style="flex: 1; font-size: 18px">
+              Adicionar ao carrinho
+            </button>
+          </div>
+          
+          <div>
+            <h3 style="font-size: 18px; font-weight: 600; color: #333">Descrição</h3>
+            <p style="color: #666; line-height: 1.6">{{ product.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Carregando produto...</p>
+</ng-template>

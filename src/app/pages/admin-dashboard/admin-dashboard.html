@@ -1,1 +1,193 @@
-<p>admin-dashboard works!</p>
+<div style="background-color: #6b9b76; min-height: 100vh">
+  <div class="container" style="padding: 40px 0">
+    <div class="dashboard-grid">
+      
+      <div class="sidebar-menu">
+        <div *ngFor="let item of menuItems"
+             [class.active]="activeSection === item.id"
+             class="menu-item"
+             (click)="handleMenuClick(item.id)">
+          <img [src]="item.icon" alt="" class="menu-icon-img" />
+          <span>{{ item.label }}</span>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div [ngSwitch]="activeSection">
+
+          <div *ngSwitchCase="'account'">
+            <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 30px; color: #333">
+              Dados do Administrador:
+            </h2>
+            <div style="background-color: white; border-radius: 15px; padding: 40px" *ngIf="user">
+              <div>
+                <div style="margin-bottom: 20px">
+                  <strong style="color: #333">Nome completo</strong>
+                  <p style="color: #666; margin: 5px 0">{{ user.fullName || 'Nome não encontrado' }}</p>
+                </div>
+                <div style="margin-bottom: 20px">
+                  <strong style="color: #333">E-mail:</strong>
+                  <p style="color: #666; margin: 5px 0">{{ user.email || 'E-mail não encontrado' }}</p>
+                </div>
+                <div style="margin-bottom: 20px">
+                  <strong style="color: #333">CNPJ:</strong>
+                  <p style="color: #666; margin: 5px 0">{{ user.cnpj || 'CNPJ não encontrado' }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngSwitchCase="'products'">
+            <div class="products-header">
+              <h2 style="font-size: 24px; font-weight: bold; color: #333">Meus Produtos</h2>
+              <button class="btn btn-primary" (click)="handleMenuClick('register-product')">
+                Adicionar Produto
+              </button>
+            </div>
+            <div class="products-list">
+              <div *ngIf="products.length > 0; else noProducts">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Imagem</th>
+                      <th>Nome</th>
+                      <th>Preço</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of products">
+                      <td>
+                        <img [src]="'assets/' + (product.image || 'assets/placeholder.svg')" [alt]="product.productName" class="product-list-image" />
+                      </td>
+                      <td>{{ product.productName }}</td>
+                      <td>{{ product.price | currency:'BRL' }}</td>
+                      <td class="product-actions">
+                        <button class="btn-edit" (click)="handleEditProduct(product)">Editar</button>
+                        <button class="btn-delete" (click)="handleDeleteProduct(product.id)">Excluir</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <ng-template #noProducts>
+                <p>Nenhum produto cadastrado ainda.</p>
+              </ng-template>
+            </div>
+          </div>
+
+          <div *ngSwitchCase="'categories'">
+            <div class="address-page-layout" [class.two-columns]="isAddingCategory || selectedCategory">
+              <div class="address-list-container">
+                <div class="address-header">
+                  <h3>Categorias</h3>
+                  <button class="btn btn-primary btn-sm" (click)="handleAddNewCategory()">Adicionar Nova</button>
+                </div>
+                <div *ngIf="categories.length > 0; else noCategories">
+                  <div class="address-list">
+                    <div *ngFor="let cat of categories" class="address-list-item" [class.active]="selectedCategory?.id === cat.id">
+                      <div class="address-info" (click)="handleEditCategory(cat)">
+                        <p><strong>{{ cat.name }}</strong></p>
+                        <p><small>ID: {{ cat.id }}</small></p>
+                        <p><small>Ícone: {{ cat.icon }}</small></p>
+                      </div>
+                      <div class="address-item-actions">
+                        <button class="btn-edit-address" (click)="handleEditCategory(cat)">Editar</button>
+                        <button class="btn-delete-address" (click)="handleCategoryDelete(cat.id)">X</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <ng-template #noCategories>
+                  <p>Nenhuma categoria cadastrada.</p>
+                </ng-template>
+              </div>
+
+              <div *ngIf="isAddingCategory || selectedCategory" class="address-form-container">
+                <h3>{{ isAddingCategory ? 'Adicionar Nova Categoria' : 'Editar Categoria' }}</h3>
+                <form (ngSubmit)="handleCategorySubmit()">
+                  <div class="form-group">
+                    <label>ID (slug):</label>
+                    <input
+                      type="text"
+                      name="id"
+                      [(ngModel)]="categoryFormData.id"
+                      required
+                      pattern="[a-z0-9-]+"
+                      title="Use apenas letras minúsculas, números e hífens."
+                      [disabled]="!isAddingCategory"
+                      [style.background-color]="isAddingCategory ? '' : '#eee'"
+                    />
+                    <small *ngIf="!isAddingCategory">O ID não pode ser alterado após a criação.</small>
+                  </div>
+                  <div class="form-group">
+                    <label>Nome:</label>
+                    <input type="text" name="name" [(ngModel)]="categoryFormData.name" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Caminho do Ícone:</label>
+                    <input type="text" name="icon" [(ngModel)]="categoryFormData.icon" required placeholder="/assets/nome-do-icone.png" />
+                    <small>Ex: /assets/nome-do-icone.png (coloque o arquivo em `public/assets`)</small>
+                  </div>
+                  <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" (click)="handleCancelCategory()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">{{ isAddingCategory ? 'Salvar' : 'Atualizar' }}</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div *ngSwitchCase="'addresses'">
+            <div class="address-page-layout" [class.two-columns]="isAddingAddress || selectedAddress">
+              <div class="address-list-container">
+                <div class="address-header">
+                  <h3>Seus Endereços</h3>
+                  <button class="btn btn-primary btn-sm" (click)="handleAddNewAddress()">Adicionar Novo</button>
+                </div>
+                <div *ngIf="user?.addresses && user.addresses.length > 0; else noAddress">
+                  <div class="address-list">
+                    <div *ngFor="let addr of user.addresses" class="address-list-item" [class.active]="selectedAddress?.id === addr.id">
+                      <div class="address-info" (click)="handleSelectAddress(addr)">
+                        <p><strong>{{ addr.street }}, {{ addr.number }}</strong></p>
+                        <p>{{ addr.city }}, {{ addr.state }}</p>
+                      </div>
+                      <div class="address-item-actions">
+                        <button class="btn-edit-address" (click)="handleSelectAddress(addr)">Editar</button>
+                        <button class="btn-delete-address" (click)="handleAddressDelete(addr.id)">X</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <ng-template #noAddress>
+                  <p>Nenhum endereço cadastrado.</p>
+                </ng-template>
+              </div>
+              
+              <div *ngIf="isAddingAddress || selectedAddress" class="address-form-container">
+                <h3>{{ isAddingAddress ? 'Adicionar Novo Endereço' : 'Editar Endereço' }}</h3>
+                <form (ngSubmit)="handleAddressSubmit()">
+                  <div class="form-group"><label>Rua:</label><input type="text" name="street" [(ngModel)]="addressFormData.street" required /></div>
+                  <div class="form-grid-2">
+                    <div class="form-group"><label>Número:</label><input type="text" name="number" [(ngModel)]="addressFormData.number" required /></div>
+                    <div class="form-group"><label>CEP:</label><input type="text" name="zipCode" [(ngModel)]="addressFormData.zipCode" required /></div>
+                  </div>
+                  <div class="form-group"><label>Bairro:</label><input type="text" name="neighborhood" [(ngModel)]="addressFormData.neighborhood" required /></div>
+                  <div class="form-grid-2">
+                    <div class="form-group"><label>Cidade:</label><input type="text" name="city" [(ngModel)]="addressFormData.city" required /></div>
+                    <div class="form-group"><label>Estado:</label><input type="text" name="state" [(ngModel)]="addressFormData.state" required /></div>
+                  </div>
+                  <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" (click)="handleCancelAddress()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">{{ isAddingAddress ? 'Salvar' : 'Atualizar' }}</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

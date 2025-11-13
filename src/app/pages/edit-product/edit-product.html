@@ -1,1 +1,83 @@
-<p>edit-product works!</p>
+<div class="edit-product-page">
+  <div class="container">
+    <div class="edit-product-card">
+      <h1>Editar Produto</h1>
+      
+      <form (ngSubmit)="handleSubmit()" *ngIf="formData.id">
+        <div class="form-group">
+          <label for="productName">Nome do produto</label>
+          <input type="text" id="productName" name="productName" [(ngModel)]="formData.productName" required />
+        </div>
+          <div class="form-group">
+            <label for="productIdEdit">ID do produto</label>
+            <input type="text" id="productIdEdit" name="productId" [(ngModel)]="formData.productId" required />
+          </div>
+
+        <div class="form-group">
+          <label for="category">Categoria</label>
+          <select id="category" name="category" [(ngModel)]="formData.category" required>
+            <option value="">Selecione uma categoria</option>
+            <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="price">Preço</label>
+          <input type="number" id="price" name="price" [(ngModel)]="formData.price" placeholder="0.00" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantidade</label>
+          <input type="number" id="quantity" name="quantity" [(ngModel)]="formData.quantity" required />
+        </div>
+          <div class="form-group">
+            <label for="sizeEdit">Tamanho</label>
+            <select id="sizeEdit" name="size" [(ngModel)]="formData.size" required>
+              <option value="">Selecione um tamanho</option>
+              <option value="pequeno">Pequeno</option>
+              <option value="medio">Médio</option>
+              <option value="grande">Grande</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="description">Descrição</label>
+          <textarea id="description" name="description" [(ngModel)]="formData.description" rows="6" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Fotos do Produto</label>
+          <div class="image-management-area">
+            
+            <div *ngFor="let imgSrc of existingImages" class="image-preview-container">
+              <img [src]="imgSrc" [alt]="imgSrc" class="image-preview" onError="this.src='/assets/placeholder.svg'"/>
+              <button type="button" class="remove-image-btn" (click)="handleRemoveImage(imgSrc, false)">×</button>
+            </div>
+
+            <div *ngFor="let preview of newImagePreviews" class="image-preview-container">
+              <img [src]="preview" alt="Nova Imagem" class="image-preview" />
+              <button type="button" class="remove-image-btn" (click)="handleRemoveImage(preview, true)">×</button>
+            </div>
+
+            <label for="photosEdit" class="add-photo-btn" (click)="photosEditInput.click()">
+              <span>+</span>
+              <span>Adicionar</span>
+            </label>
+            <input type="file" id="photosEdit" accept="image/*" multiple 
+                   (change)="handleImageUpload($event)" 
+                   style="display: none" 
+                   #photosEditInput />
+          </div>
+          <small>Lembre-se de colocar os arquivos das novas imagens na pasta `public/products/`.</small>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" (click)="navigateToDashboard()">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Salvar Alterações
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

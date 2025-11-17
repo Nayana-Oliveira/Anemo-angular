@@ -11,6 +11,7 @@ import { CartService, CartItem } from '../../services/cart.service';
   templateUrl: './cart.html',
   styleUrl: './cart.css', 
 })
+
 export class Cart {
   
   cartItems;

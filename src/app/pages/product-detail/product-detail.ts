@@ -1,4 +1,3 @@
-// src/app/pages/product-detail/product-detail.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -35,10 +34,8 @@ export class ProductDetail implements OnInit {
         next: (data) => {
           this.product = data;
           
-          // CORREÇÃO APLICADA AQUI: Adicionar 'assets' ao caminho
           this.mainImage = 'assets' + data.image; 
           
-          // E aqui também, para a lista de thumbnails
           this.productImages = data.images && data.images.length > 0 
                              ? data.images.map(img => 'assets' + img) 
                              : ['assets' + data.image];

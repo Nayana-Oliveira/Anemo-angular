@@ -1,9 +1,7 @@
-// src/app/pages/login-admin/login-admin.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth'; 
 
 @Component({
@@ -24,18 +22,15 @@ export class LoginAdmin {
   constructor(
     private authService: AuthService, 
     private router: Router,
-    private toastr: ToastrService
   ) {}
 
   handleSubmit(): void {
     this.authService.adminLogin(this.formData.email, this.formData.password).subscribe({
       next: (admin) => {
-        this.toastr.success('Login de administrador bem-sucedido!');
         this.router.navigate(['/admin-dashboard']); 
       },
       error: (err) => {
-        this.toastr.error(err.message || 'E-mail ou senha de administrador inválidos!');
-      }
+        console.error('Erro ao fazer login:', err);}
     });
   }
 }

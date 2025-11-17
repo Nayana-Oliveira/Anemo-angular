@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 import { Category } from '../../models/category.model';
@@ -32,7 +31,6 @@ export class ProductRegistration implements OnInit {
 
   constructor(
     private router: Router,
-    private toastr: ToastrService,
     private categoryService: CategoryService,
     private productService: ProductService
   ) {}
@@ -40,17 +38,14 @@ export class ProductRegistration implements OnInit {
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe({
       next: (data) => this.categories = data,
-      error: (err) => this.toastr.error('Erro ao carregar categorias.')
     });
   }
 
   handleSubmit(): void {
     if (!this.formData.category) {
-      this.toastr.error("Por favor, selecione uma categoria para o produto.");
       return;
     }
     if (this.imageFiles.length === 0) {
-      this.toastr.error("Por favor, selecione pelo menos uma imagem para o produto.");
       return;
     }
 
@@ -62,12 +57,10 @@ export class ProductRegistration implements OnInit {
 
     this.productService.createProduct(finalProductData).subscribe({
       next: () => {
-        this.toastr.success("Produto cadastrado com sucesso!");
         this.router.navigate(["/admin-dashboard"]);
       },
       error: (err) => {
         console.error('Erro ao cadastrar produto:', err);
-        this.toastr.error("Erro ao cadastrar produto. Tente novamente.");
       }
     });
   }

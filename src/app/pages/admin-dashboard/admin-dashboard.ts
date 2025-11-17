@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth';
-import { ProductService } from '../../services/product.service'; 
-import { CategoryService } from '../../services/category.service'; 
+import { ProductService } from '../../services/product.service';
+import { CategoryService } from '../../services/category.service';
 import { Product } from '../../models/product.model';
 import { Category } from '../../models/category.model';
 import { environment } from '../../../environments/environment';
@@ -20,22 +19,22 @@ const emptyCategory = {
 
 @Component({
   selector: 'app-admin-dashboard',
-  standalone: true, 
-  imports: [CommonModule, FormsModule], 
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './admin-dashboard.html',
   styleUrl: './admin-dashboard.css',
 })
 export class AdminDashboard implements OnInit {
-  
+
   activeSection = "products";
-  user: any = null; 
+  user: any = null;
   products: Product[] = [];
   categories: Category[] = [];
 
   selectedAddress: any = null;
   isAddingAddress = false;
   addressFormData: any = { ...emptyAddress };
-  
+
   selectedCategory: any = null;
   isAddingCategory = false;
   categoryFormData: any = { ...emptyCategory };
@@ -56,21 +55,19 @@ export class AdminDashboard implements OnInit {
     private productService: ProductService,
     private categoryService: CategoryService,
     private router: Router,
-    private http: HttpClient, 
-    private toastr: ToastrService
+    private http: HttpClient,
   ) {}
 
   ngOnInit(): void {
     this.user = this.authService.currentUser();
     if (!this.user || this.user.type !== 'admin') {
-      this.toastr.error("Acesso negado.");
       this.router.navigate(['/login-admin']);
       return;
     }
-    
+
     this.loadSectionData(this.activeSection);
   }
-  
+
   loadSectionData(section: string): void {
     if (section === "products") {
       this.fetchProducts();
@@ -84,7 +81,6 @@ export class AdminDashboard implements OnInit {
       next: (data) => this.products = data,
       error: (err) => {
         console.error('Erro ao buscar produtos:', err);
-        this.toastr.error('Erro ao buscar produtos.');
       }
     });
   }
@@ -94,7 +90,6 @@ export class AdminDashboard implements OnInit {
       next: (data) => this.categories = data,
       error: (err) => {
         console.error('Erro ao buscar categorias:', err);
-        this.toastr.error("Erro ao buscar categorias.");
       }
     });
   }
@@ -102,13 +97,13 @@ export class AdminDashboard implements OnInit {
   handleMenuClick(itemId: string): void {
     if (itemId === "logout") {
       this.authService.logout();
-      this.router.navigate(["/login-admin"]); 
+      this.router.navigate(["/login-admin"]);
     } else if (itemId === "register-product") {
       this.router.navigate(["/product-registration"]);
     } else {
       this.activeSection = itemId;
-      this.loadSectionData(itemId); 
-      
+      this.loadSectionData(itemId);
+
       this.handleCancelAddress();
       this.handleCancelCategory();
     }
@@ -122,12 +117,10 @@ export class AdminDashboard implements OnInit {
     if (window.confirm("Tem certeza que deseja excluir este produto?")) {
       this.http.delete(`${this.apiUrl}/products/${productId}`).subscribe({
         next: () => {
-          this.toastr.success("Produto excluído com sucesso!");
-          this.fetchProducts(); 
+          this.fetchProducts();
         },
         error: (err) => {
           console.error('Erro ao excluir produto:', err);
-          this.toastr.error("Erro ao excluir produto.");
         }
       });
     }
@@ -138,7 +131,7 @@ export class AdminDashboard implements OnInit {
     let updatedAddresses;
 
     if (isEditing) {
-      updatedAddresses = (this.user.addresses || []).map((addr: any) => 
+      updatedAddresses = (this.user.addresses || []).map((addr: any) =>
         addr.id === this.addressFormData.id ? this.addressFormData : addr
       );
     } else {
@@ -151,16 +144,14 @@ export class AdminDashboard implements OnInit {
       next: (response: any) => {
         this.authService.updateCurrentUser(response);
         this.user = response;
-        this.toastr.success(`Endereço ${isEditing ? 'atualizado' : 'salvo'} com sucesso!`);
         this.handleCancelAddress();
       },
       error: (err) => {
         console.error("Erro ao salvar endereço do admin:", err);
-        this.toastr.error("Erro ao salvar endereço.");
       }
     });
   }
-  
+
   handleAddressDelete(addressId: string): void {
      if (window.confirm("Tem certeza que deseja excluir este endereço?")) {
         const updatedAddresses = this.user.addresses.filter((addr: any) => addr.id !== addressId);
@@ -170,25 +161,23 @@ export class AdminDashboard implements OnInit {
           next: (response: any) => {
             this.authService.updateCurrentUser(response);
             this.user = response;
-            this.toastr.success("Endereço excluído com sucesso!");
             if (this.selectedAddress?.id === addressId) {
               this.handleCancelAddress();
             }
           },
           error: (err) => {
             console.error("Erro ao excluir endereço do admin:", err);
-            this.toastr.error("Erro ao excluir endereço.");
           }
         });
      }
   }
-  
+
   handleSelectAddress(address: any): void {
     this.selectedAddress = address;
     this.addressFormData = { ...address };
     this.isAddingAddress = false;
   }
-  
+
   handleAddNewAddress(): void {
     this.selectedAddress = null;
     this.addressFormData = { ...emptyAddress };
@@ -207,21 +196,18 @@ export class AdminDashboard implements OnInit {
       ? `${this.apiUrl}/categories/${this.selectedCategory.id}`
       : `${this.apiUrl}/categories`;
     const method = isEditing ? 'put' : 'post';
-    
+
     if (!/^[a-z0-9-]+$/.test(this.categoryFormData.id)) {
-        this.toastr.error("O ID da categoria deve conter apenas letras minúsculas, números e hífens.");
         return;
     }
-    
+
     this.http.request(method, url, this.categoryFormData).subscribe({
         next: () => {
-            this.toastr.success(`Categoria ${isEditing ? 'atualizada' : 'salva'} com sucesso!`);
             this.fetchCategories();
             this.handleCancelCategory();
         },
         error: (err) => {
              console.error(`Erro ao ${isEditing ? 'atualizar' : 'salvar'} categoria:`, err);
-             this.toastr.error(`Erro ao ${isEditing ? 'atualizar' : 'salvar'} categoria.`);
         }
     });
   }
@@ -230,7 +216,6 @@ export class AdminDashboard implements OnInit {
     if (window.confirm("Tem certeza que deseja excluir esta categoria?")) {
       this.http.delete(`${this.apiUrl}/categories/${categoryId}`).subscribe({
         next: () => {
-          this.toastr.success("Categoria excluída com sucesso!");
           this.fetchCategories();
           if (this.selectedCategory?.id === categoryId) {
             this.handleCancelCategory();
@@ -238,7 +223,6 @@ export class AdminDashboard implements OnInit {
         },
         error: (err) => {
           console.error("Erro ao excluir categoria:", err);
-          this.toastr.error("Erro ao excluir categoria.");
         }
       });
     }
@@ -249,13 +233,13 @@ export class AdminDashboard implements OnInit {
     this.categoryFormData = { ...category };
     this.isAddingCategory = false;
   }
-  
+
   handleAddNewCategory(): void {
     this.selectedCategory = null;
     this.categoryFormData = { ...emptyCategory };
     this.isAddingCategory = true;
   }
-  
+
   handleCancelCategory(): void {
     this.selectedCategory = null;
     this.isAddingCategory = false;

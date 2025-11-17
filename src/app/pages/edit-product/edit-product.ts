@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 import { Category } from '../../models/category.model';
@@ -26,7 +25,6 @@ export class EditProduct implements OnInit {
 
   constructor(
     private router: Router,
-    private toastr: ToastrService,
     private categoryService: CategoryService,
     private productService: ProductService
   ) {
@@ -37,7 +35,6 @@ export class EditProduct implements OnInit {
       this.formData = { ...productToEdit };
       this.existingImages = productToEdit.images || (productToEdit.image ? [productToEdit.image] : []);
     } else {
-      this.toastr.error("Produto não encontrado para edição.");
       this.router.navigate(['/admin-dashboard']);
     }
   }
@@ -45,13 +42,11 @@ export class EditProduct implements OnInit {
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe({
       next: (data) => this.categories = data,
-      error: (err) => this.toastr.error('Erro ao carregar categorias.')
     });
   }
 
   handleSubmit(): void {
     if (!this.formData.category) {
-      this.toastr.error("Por favor, selecione uma categoria.");
       return;
     }
 
@@ -59,7 +54,6 @@ export class EditProduct implements OnInit {
     const updatedImages = [...this.existingImages, ...newImagePaths];
 
     if (updatedImages.length === 0) {
-      this.toastr.error("O produto deve ter pelo menos uma imagem.");
       return;
     }
 
@@ -71,12 +65,10 @@ export class EditProduct implements OnInit {
 
     this.productService.updateProduct(this.formData.id, finalProductData).subscribe({
       next: () => {
-        this.toastr.success("Produto atualizado com sucesso!");
         this.router.navigate(['/admin-dashboard']);
       },
       error: (err) => {
         console.error('Erro ao atualizar produto:', err);
-        this.toastr.error("Erro ao atualizar o produto. Tente novamente.");
       }
     });
   }

@@ -1,10 +1,8 @@
-// src/app/pages/user-dashboard/user-dashboard.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth';
 import { environment } from '../../../environments/environment';
 
@@ -44,7 +42,6 @@ export class UserDashboard implements OnInit {
     private authService: AuthService,
     private router: Router,
     private http: HttpClient,
-    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -76,12 +73,10 @@ export class UserDashboard implements OnInit {
         this.user = updatedUser;
         this.formData = { ...updatedUser };
         this.completionPercentage = this.calculateProfileCompletion();
-        this.toastr.success("Dados atualizados com sucesso!");
         this.activeSection = "account";
       },
       error: (err) => {
         console.error("Erro ao atualizar dados:", err);
-        this.toastr.error("Não foi possível atualizar os dados.");
       }
     });
   }
@@ -105,12 +100,10 @@ export class UserDashboard implements OnInit {
       next: (response: any) => {
         this.authService.currentUser.set(response); 
         this.user = response;
-        this.toastr.success(`Endereço ${isEditing ? 'atualizado' : 'salvo'} com sucesso!`);
         this.handleCancelAddress();
       },
       error: (err) => {
         console.error("Erro ao salvar endereço:", err);
-        this.toastr.error("Erro ao salvar endereço.");
       }
     });
   }
@@ -124,14 +117,12 @@ export class UserDashboard implements OnInit {
         next: (response: any) => {
           this.authService.currentUser.set(response);
           this.user = response;
-          this.toastr.success("Endereço excluído com sucesso!");
           if (this.selectedAddress?.id === addressId) {
             this.handleCancelAddress();
           }
         },
         error: (err) => {
           console.error("Erro ao excluir endereço:", err);
-          this.toastr.error("Erro ao excluir endereço.");
         }
       });
     }
